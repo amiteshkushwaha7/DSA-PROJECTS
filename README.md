@@ -53,32 +53,11 @@ g++ metro_distance_finder.cpp -o metro_distance_finder
 ./metro_distance_finder
 ```
 
-## 🗺 List of Metro Stations
-Here are some example stations from the metro network:
-
-0: Gandhi Nagar
-
-1: Karond
-
-2: Berasia
-
-3: Budhwar
-
-4: Jahangirabad
-
-...
-
-For the full list, refer to the program output.
-
 
 ## 🔧 Technologies Used
 **Language:** C++
 
 **Standard Library:** Vectors, Pairs, Sets
-
-
-## 📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 
 ## 🤝 Contributing
