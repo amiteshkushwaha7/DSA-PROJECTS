@@ -31,11 +31,11 @@ The program allows a user to input a source station and displays the shortest di
 
 ## 🛠 How It Works
 
-1.⁠ ⁠**Input:** The user selects the source station from the list of 53 available stations.
+**1.Input:** The user selects the source station from the list of 53 available stations.
 
-2.⁠ ⁠**Dijkstra's Algorithm:** The algorithm computes the shortest distance from the source station to all connected stations.
+**2.Dijkstra's Algorithm:** The algorithm computes the shortest distance from the source station to all connected stations.
 
-3.⁠  **Output**: Displays the distance of all stations from the source.
+**3.Output**: Displays the distance of all stations from the source.
 
 
 ## 📍 Metro Station Network
