@@ -5,45 +5,50 @@
 
 using namespace std;
 
+// Function implementing Dijkstra's algorithm for shortest path
 void dijkstra(int src, vector<vector<pair<int, int>>> &graph, vector<string> &stationNames)
 {
+    // distance vector store distance of each station from source station
     vector<int> distance(graph.size(), 1e9 + 7);
 
-    distance[src] = 0;
+    distance[src] = 0; // initialized distance between source station to source station is 0 
 
-    set<pair<int, int>> activeNode;
-    activeNode.insert({distance[src], src}); // Insert correct pair
+    set<pair<int, int>> activeNode; // activeNode set is used to store current station and their neighbors
+    activeNode.insert({distance[src], src}); // Insert source station pair(station distance, station code)
 
+    // Itrate while set is not empty
     while (!activeNode.empty())
     {
-        pair<int, int> p = *(activeNode.begin());
-        activeNode.erase(activeNode.begin());
+        pair<int, int> p = *(activeNode.begin()); // Get station with the smallest distance
+        activeNode.erase(activeNode.begin()); // Remove it form set
 
-        int node = p.second;
-        int nodeDistance = p.first;
+        int node = p.second; // Extract station
+        int nodeDistance = p.first; // Extract the distance of the station
 
+        // Itrate over all neighbors of the current station
         for (auto neighbor : graph[node])
         {
-            int adjNode = neighbor.first;
-            int weight = neighbor.second;
+            int adjNode = neighbor.first; // Extract neighbor station
+            int weight = neighbor.second; // Extract weight of the neighbor
 
+            // Checking if shorter path found from current station to neighbour station
             if (nodeDistance + weight < distance[adjNode])
             {
+                // if the station is already discovered then erase it
                 if (distance[adjNode] != 1e9 + 7)
                     activeNode.erase({distance[adjNode], adjNode});
 
+                // Updation new shortest distance
                 distance[adjNode] = nodeDistance + weight;
-                activeNode.insert({distance[adjNode], adjNode});
+                activeNode.insert({distance[adjNode], adjNode});  // Inserting neighbours
             }
         }
     }
 
-    cout << "Station Code: "
-         << "Station Name ---> Distance from " << stationNames[src] << endl;
+    // Print each station and its distance from the source
+    cout <<endl <<"Code: "<< "Station Name ---> Distance(visited stations) from " << stationNames[src] << endl;
     for (int i = 0; i < graph.size(); i++)
-    {
-        cout << i << ": " << stationNames[i] << "-->" << distance[i] << " km" << endl;
-    }
+        cout <<"  "<<i << " : " << stationNames[i] <<" ----> " << distance[i] << endl;    
 }
 
 int main()
@@ -51,7 +56,7 @@ int main()
     // Create a graph where each station is connected with a distance of 1
     vector<vector<pair<int, int>>> graph(53); // We have 53 stations (0 to 52)
 
-    // Correctly adding connections based on adjacency from the map (all with distance = 1)
+    // Connecting all stations with their adjcent stations  (all with distance = 1)
     graph[0] = {{1, 1}};
     graph[1] = {{0, 1}, {2, 1}};
     graph[2] = {{1, 1}, {3, 1}};
@@ -106,9 +111,12 @@ int main()
     graph[51] = {{50, 1}, {52, 1}};
     graph[52] = {{21, 1}, {51, 1}};
 
+
+    
+    // Vector holding the names of the stations
     vector<string> stationNames = {
-        "Gandhi Nagar", "Karond", "Berasia", "Budhwar", "Jahangirabad",
-        "Roshanpura", "Kotra Sultanabad", "Nehru Nagar", "Shyamla Hills",
+        "Gandhi Nagar", "Karond", "Berasia", "Budhwara", "Jahangirabad",
+        "Roushanpura", "Kotra Sultanabad", "Nehru Nagar", "Shyamla Hills",
         "Van Vihar", "Jawahar Chowk", "Rangmahal", "Vidhan Sabha",
         "MP Nagar", "6 no. stop", "Shivaji Nagar", "Chaar Imli", "Bittan Market",
         "Shahpura", "Gulmohar", "Aakriti Eco City", "Sadiya", "Chandbad",
@@ -121,17 +129,22 @@ int main()
         "Sarvadharm", "Bima Kunj", "Danish Kunj", "Nayapura",
         "Bairagarh Chichli"};
 
-    cout << "Station Code: "
-         << "Station Name" << endl;
+
+    // Printing Stations Names
+    cout << "Station Code: "<< "Station Name" << endl;
     for (int i = 0; i < graph.size(); i++)
         cout << i << ": " << stationNames[i] << endl;
 
+    // Taking source station code from user
     int src;
-    cout << endl
-         << "Enter your source station: ";
+    cout << endl<< "Enter your source station code: ";
     cin >> src;
 
-    dijkstra(src, graph, stationNames);
+    // Checking valid input
+    if(src<0 || src>52)
+        cout<<"Invalid Station Code";
+    else
+        dijkstra(src, graph, stationNames);
 
     return 0;
 }
