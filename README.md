@@ -1,4 +1,4 @@
-# Metro Station Distance Finder Using Dijkstra's Algorithm 🚉
+# 🚉 Metro Station Distance Finder Using Dijkstra's Algorithm 
 
 This project implements Dijkstra's algorithm to find the shortest path (in terms of distance) between a source station and all other stations in a city metro system. The graph represents metro stations, where each station is connected to neighboring stations by a fixed distance.
 
@@ -85,9 +85,14 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 Feel free to submit issues or pull requests if you find any bugs or have suggestions for improvement. Contributions are always welcome!
 
 
-## 💡 Contact
-If you have any questions or need further assistance, feel free to reach out:
+## Connect with Me
+ If you have any questions, suggestions, or just want to connect, feel free to reach out:
 
-**Email:** amiteshkushwaha2020@gmail.com
+**Email**: amiteshkushwaha2020@gmail.com
 
-**GitHub:** amiteshkushwaha7
+**Linedin**: https://www.linkedin.com/in/amiteshkushwaha
+
+**X**: https://x.com/Amitesh037
+
+**GitHub**: https://github.com/amiteshkushwaha7
+   
